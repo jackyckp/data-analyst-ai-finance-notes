@@ -6,7 +6,7 @@ The **Regression Channel** in RegressionChannelSimple.py is used to identify the
    The regression line represents the trend of the price over a rolling window.
 
    ````python
-   # filepath: c:\Users\hklov\OneDrive\Documentos\UToronto\aps1052\HomeworkPandasExercise_UPLOAD\RegressionChannelSimple.py
+   # filepath: c:\Users\...\RegressionChannelSimple.py
    # ...existing code...
    window = 100  # window size for regression
    dfP['regression_line'] = dfP['Adj Close'].rolling(window).apply(
