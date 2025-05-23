@@ -11,7 +11,7 @@ The core idea is that when a shorter-term moving average crosses above a longer-
     *   A "slow" (longer-term) SMA using a window defined by the `slow_MA` variable.
 
     ```python
-    # filepath: c:\Users\hklov\OneDrive\Documentos\UToronto\aps1052\HomeworkPandasExercise_UPLOAD\moving_average_crossover_simple.py
+    # filepath: c:\Users\...\moving_average_crossover_simple.py
     # ...existing code...
     dfP['SMA_fast'] = dfP['Adj Close'].rolling(window=fast_MA).mean()
     dfP['SMA_slow'] = dfP['Adj Close'].rolling(window=slow_MA).mean()
@@ -25,7 +25,7 @@ The core idea is that when a shorter-term moving average crosses above a longer-
     *   `short_exit`: True when the fast SMA is greater than the slow SMA (if `shorts` is enabled).
 
     ```python
-    # filepath: c:\Users\hklov\OneDrive\Documentos\UToronto\aps1052\HomeworkPandasExercise_UPLOAD\moving_average_crossover_simple.py
+    # filepath: c:\Users\...\moving_average_crossover_simple.py
     # ...existing code...
     # set up num_units_long
     dfP['long_entry'] = ((dfP.SMA_fast > dfP.SMA_slow))
@@ -40,7 +40,7 @@ The core idea is that when a shorter-term moving average crosses above a longer-
 3.  **Determine Position (`stance`):** The `long_entry`, `long_exit`, `short_entry`, and `short_exit` signals are used to determine the trading position (`num_units_long` and `num_units_short`). These columns are filled forward (`fillna(method='pad')`) to maintain the position until an exit signal occurs. The final `stance` column represents the overall position (e.g., 1 for long, -1 for short, 0 for flat).
 
     ```python
-    # filepath: c:\Users\hklov\OneDrive\Documentos\UToronto\aps1052\HomeworkPandasExercise_UPLOAD\moving_average_crossover_simple.py
+    # filepath: c:\Users\...\moving_average_crossover_simple.py
     # ...existing code...
     dfP.loc[dfP['long_entry'], 'num_units_long'] = 1
     dfP.loc[dfP['long_exit'], 'num_units_long'] = 0
@@ -55,7 +55,7 @@ The core idea is that when a shorter-term moving average crosses above a longer-
 4.  **Calculate System Returns:** The `stance` column (representing the trading position) is multiplied by the daily percentage returns (`pct_rets`) of the asset, shifted by a `delay` period, to calculate the system's daily returns (`syst_rets`).
 
     ```python
-    # filepath: c:\Users\hklov\OneDrive\Documentos\UToronto\aps1052\HomeworkPandasExercise_UPLOAD\moving_average_crossover_simple.py
+    # filepath: c:\Users\...\moving_average_crossover_simple.py
     # ...existing code...
     dfP['pct_rets'] = (dfP['Adj Close']-dfP['Adj Close'].shift(1)
                        )/dfP['Adj Close'].shift(1)
